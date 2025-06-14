@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  z-index: 10;
+  position: relative;
+}
+
+.nav-title {
+  padding-top: 10px;
+  font-size: 50px;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  flex-grow: 1;
+  letter-spacing: 0.5px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Main Layout */
+.body-container {
+  position: relative;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content {
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.tagline {
+  font-size: 5rem;
+  color: black;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.highlighted-word {
+  position: relative;
+  color: rgba(102, 51, 153, 0.3);
+  font-weight: 600;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: text-bottom;
+}
+
+.highlighted-word::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: sparkle 2.5s infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.apostrophe {
+  font-size: 8rem;
+  color: rgba(102, 51, 153, 0.3);
+  font-family: 'Playfair Display', serif;
+  user-select: none;
+  line-height: 1;
+  transform: translateY(5px);
+}
+
+.left-apostrophe {
+  margin-right: 1rem;
+}
+
+.right-apostrophe {
+  margin-left: 1rem;
+}
+
+.card-row {
+  margin-top: 3rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flip Card */
+.card {
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-front {
+  background-color: white;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+.card-back {
+  background-color: rgba(130, 86, 174, 0.3);
+  transform: rotateY(180deg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.card-text-back {
+  color: white;
+  position: absolute;
+  text-align: center;
+  padding: 1rem;
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  z-index: 2;
+  width: 80%;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+/* Radial Gradient Circle */
+.card-gradient {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(102, 51, 153, 0.3), transparent 70%);
+  filter: blur(10px);
+  position: absolute;
+  z-index: 1;
+}
+
+.card-back .card-gradient {
+  background: radial-gradient(circle at center, rgba(102, 51, 153, 0.4), transparent 70%);
+  filter: blur(12px);
+}
+
+.card-text {
+  position: absolute;
+  text-align: center;
+  padding: 1rem;
+  color: #333;
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  z-index: 2;
+  width: 80%;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+.card-back .card-text {
+  color: #222;
+}
+
+/* Quote Section */
+.vision-quote {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #333;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.lavender-highlight {
+  background: linear-gradient(to top, rgba(102, 51, 153, 0.25) 45%, transparent 45%);
+  padding: 0 0.2em;
+  display: inline;
+}
+
+.word.uncertainty {
+  text-decoration: line-through;
+  color: #888;
+  transition: text-decoration 0.3s ease, color 0.3s ease;
+}
+
+.word.strategy {
+  color: rgba(102, 51, 153, 0.8);
+  transition: color 0.4s ease;
+}
